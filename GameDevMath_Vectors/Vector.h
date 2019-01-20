@@ -1,14 +1,15 @@
 #pragma once
 #ifndef VECTOR_H
 #define VECTOR_H
+#include <iostream>
 #include <cmath>
 class Vector {
 private:
-	float x;
-	float y;
+	double x;
+	double y;
 
 public:
-	Vector(float x, float y) {
+	Vector(const double x, const double y) {
 		this->x = x;
 		this->y = y;
 	}
@@ -22,22 +23,22 @@ public:
 		x = v1.getX();
 		y = v1.getY();
 	}
-	float getX() const { return x; }
-	float getY() const { return y; }
-	float length() const;
-	float lengthSqr() const;
-	void addVector(Vector v1);
+	double getX() const { return x; }
+	double getY() const { return y; }
+	unsigned int length();
+	void addVector(const Vector v1);
 
-	Vector operator=(const Vector& v1);
-	Vector operator*(float speed) const;
+	void operator=(const Vector& v1);
+	void operator*(const double speed);
 	
-	Vector operator/(float speed) const;
-	Vector normalize() const;
-	float dotProduct(const Vector & source, const Vector & destination)const;
+	void operator/(const double speed);
+	void normalize();
 	
 };
 Vector operator-(const Vector& v1, const Vector& v2);
 Vector operator+(const Vector& v1, const Vector& v2);
 Vector operator*(const Vector& v1, const Vector& v2);
+Vector operator*(const Vector& v1, const double scale);
 float dotProduct(const Vector & source, const Vector & destination);
+std::ostream & operator << (std::ostream &out, const Vector &v);
 #endif
