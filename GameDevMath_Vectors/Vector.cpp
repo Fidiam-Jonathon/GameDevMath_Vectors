@@ -69,3 +69,46 @@ Vector operator*(const Vector& v1, const double scale) {
 	Vector retVal(v1.getX() * scale, v1.getY() * scale);
 	return retVal;
 }
+
+bool operator<(const Vector& left, const Vector& right) {
+	Vector leftMinusRight = left - right;
+	Vector rightMinusLeft = right - left;
+
+	if (leftMinusRight.getX() < rightMinusLeft.getX() ||
+		leftMinusRight.getY() < rightMinusLeft.getY()) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+bool operator>(const Vector& left, const Vector& right) {
+	if (left < right) {
+		return false;
+	}
+	else {
+		return true;
+	}
+}
+
+
+Vector approach(const Vector& goal, const Vector& position, const Vector& delta) {
+	Vector retVal(0, 0);
+	Vector difference = goal - position;
+	if (difference < delta) {
+		retVal = difference + delta;
+	}
+	if (difference < -delta) {
+		retVal = difference - delta;
+	}
+	if (difference.getX() == 0 && difference.getY() == 0) {
+		retVal = goal;
+	}
+	return retVal;
+}
+
+Vector operator-(const Vector& right) {
+	Vector retVal(-right.getX(), -right.getY());
+	return retVal;
+}

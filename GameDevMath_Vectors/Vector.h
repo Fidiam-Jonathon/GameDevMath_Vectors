@@ -32,8 +32,7 @@ public:
 	void operator*(const double speed);
 	
 	void operator/(const double speed);
-	void normalize();
-	
+	void normalize();	
 };
 Vector operator-(const Vector& v1, const Vector& v2);
 Vector operator+(const Vector& v1, const Vector& v2);
@@ -41,4 +40,8 @@ Vector operator*(const Vector& v1, const Vector& v2);
 Vector operator*(const Vector& v1, const double scale);
 float dotProduct(const Vector & source, const Vector & destination);
 std::ostream & operator << (std::ostream &out, const Vector &v);
+Vector approach(const Vector& goal, const Vector& position, const Vector& delta);
+bool operator<(const Vector& left, const Vector& right);
+bool operator>(const Vector& left, const Vector& right);
+Vector operator-(const Vector& right);
 #endif

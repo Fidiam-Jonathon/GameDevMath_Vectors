@@ -67,11 +67,12 @@ int main()
 	Vector gravity(0, -2);
 	double previousTime = 0;
 	double currentTime = glfwGetTime();
+	bool keepGoing = true;
 
 	std::cout << "current position: " << mPosition << std::endl;
 	std::cout << "current velocity: " << mVelocity << std::endl;
 	
-		while (true) {
+		while (keepGoing) {
 		previousTime = currentTime;
 		currentTime = glfwGetTime();
 		double deltaTime = currentTime - previousTime;
@@ -87,6 +88,9 @@ int main()
 		std::cout << std::endl;
 		mPosition = newPosition;
 		mVelocity = newVelocity;
+		if (mVelocity.getY() <= 0.0) {
+			keepGoing = false;
+		}
 		Sleep(2000);
 	}
 	
