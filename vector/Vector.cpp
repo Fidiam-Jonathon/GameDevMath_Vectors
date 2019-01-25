@@ -99,10 +99,10 @@ Vector approach(const Vector& goal, const Vector& position, const Vector& delta)
 	if (difference < delta) {
 		retVal = difference + delta;
 	}
-	if (difference < -delta) {
+	else if (difference < -delta) {
 		retVal = difference - delta;
 	}
-	if (difference.getX() == 0 && difference.getY() == 0) {
+	else /*(difference.getX() == 0 && difference.getY() == 0) */{
 		retVal = goal;
 	}
 	return retVal;
